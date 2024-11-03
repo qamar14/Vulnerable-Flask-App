@@ -1,4 +1,4 @@
-name: sast 
+name: sca
 
 on:
   push:
@@ -9,7 +9,8 @@ jobs:
     steps:
     - name: Checkout 🛎️
       uses: actions/checkout@v2
-    - name : Installing the bandit tool
+    - name : Installing the sca
       run : |
-        pip install bandit
-        bandit -r app 
+        pip install pyraider
+        cd app
+        pyraider check -f requirements.txt
